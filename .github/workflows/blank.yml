@@ -42,7 +42,5 @@ jobs:
       - name: Install dependencies
         run: poetry install --no-interaction --no-root
 
-      - name: Run tests
-        run: |
-          poetry run pytest tests/
-          poetry run coverage report
+      - name: Test with pytest
+        run: poetry run pytest --cov=<project-dir> --cov-report=xml
