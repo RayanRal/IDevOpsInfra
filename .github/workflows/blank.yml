@@ -6,7 +6,6 @@ on:
   push:
     branches: [ $default-branch ]
   pull_request:
-    branches: [ $default-branch ]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -23,14 +22,14 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-  lint:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set Up Python 3
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: '3.9.x'
 
@@ -42,4 +41,9 @@ jobs:
           installer-parallel: true
 
       - name: Install dependencies
-        run: poetry install --no-interaction --no-root
+        run: poetry install --no-interaction
+
+      - name: Test with pytest
+        run: |
+          source .venv/bin/activate
+          pytest tests/
