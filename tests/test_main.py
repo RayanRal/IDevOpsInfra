@@ -1,4 +1,4 @@
-import src.devopsproj.main
+import src.idevopsinfra.web.main
 
 
 def test_main():
