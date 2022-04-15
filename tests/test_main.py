@@ -1,6 +1,6 @@
-import src.idevopsinfra.web.main
+from src.idevopsinfra.web.main import main_func
 
 
 def test_main():
-    result = src.devopsproj.main.main_func()
+    result = main_func()
     assert result
